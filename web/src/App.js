@@ -11,6 +11,7 @@ import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
 import PurchaseHistory from './views/PurchaseHistory';
 import MainChoice from './views/MainChoice';
+import SomethingQuick from './views/SometingQuick';
 
 function App() {
   const view = useSelector(state => state.view);
@@ -38,7 +39,7 @@ function App() {
         display='flex'
         flexDirection='column'
         color='text.primary'
-        overflow='scroll'
+        style={{ overflowX: 'hidden' }}
       >
         {(() => {
           switch(view) {
@@ -48,6 +49,8 @@ function App() {
               return <PurchaseHistory />
             case VIEW.MAIN_CHOICE:
               return <MainChoice />
+            case VIEW.SOMETHING_QUICK:
+              return <SomethingQuick />
             default:
               return <h1>{view} is not known</h1>
           }

@@ -13,7 +13,7 @@ const SelectionButton = ({ children, ...props }) => (
 export default function LandingPage() {
   const dispatch = useDispatch();
   const onClick = () => {
-    dispatch(changeView(VIEW.PURCHASE_HISTORY));
+    dispatch(changeView(VIEW.SOMETHING_QUICK));
   }
 
   return (
