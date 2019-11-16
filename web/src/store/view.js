@@ -1,8 +1,9 @@
 export const VIEW = {
-  MAIN: 'MAIN',
+  LANDING: 'LANDING',
+  PURCHASE_HISTORY: 'PURCHASE_HISTORY'
 }
 
-const defaultState = VIEW.MAIN;
+const defaultState = VIEW.LANDING;
 
 const CHANGE_VIEW = 'CHANGE_VIEW';
 
