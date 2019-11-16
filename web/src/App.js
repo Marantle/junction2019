@@ -11,12 +11,12 @@ import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
 import RecipeSelection from './views/RecipeSelection/RecipeSelection';
 import PurchaseHistory from './views/PurchaseHistory';
+import MainChoice from './views/MainChoice';
 
 function App() {
   const view = useSelector(state => state.view);
   const dispatch = useDispatch();
   const theme = useTheme();
-  dispatch(changeView(VIEW.RECIPE_SELECTION))
   return (
     <Box
       style={{
@@ -27,12 +27,19 @@ function App() {
         margin: 'auto',
         maxWidth: '640px'
       }}
-      bgcolor='secondary.main'
     >
-      <Box component='h1' textAlign='center' color='text.secondary'>
-        Kitchen Konmari
+      <Box bgcolor='secondary.main'>
+        <Box component='h1' textAlign='center' color='text.secondary'>
+          Kitchen Konmari
+        </Box>
       </Box>
-      <Box style={{ flex: 1 }} color='text.primary'>
+      <Box
+        flex={'1'}
+        display='flex'
+        flexDirection='column'
+        color='text.primary'
+        overflow='scroll'
+      >
         {(() => {
           switch(view) {
             case VIEW.LANDING:
@@ -41,6 +48,8 @@ function App() {
               return <PurchaseHistory />
             case VIEW.RECIPE_SELECTION:
               return <RecipeSelection />
+            case VIEW.MAIN_CHOICE:
+              return <MainChoice />
             default:
               return <h1>{view} is not known</h1>
           }
