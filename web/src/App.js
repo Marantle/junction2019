@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '@material-ui/core/Container';
 import EuroIcon from '@material-ui/icons/Euro';
 import HomeIcon from '@material-ui/icons/Home';
 import EcoIcon from '@material-ui/icons/Eco';
 import Box from '@material-ui/core/Box';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
@@ -14,13 +14,20 @@ import PruchaseHistory from './views/PurchaseHistory';
 function App() {
   const view = useSelector(state => state.view);
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   return (
-    <Container
-      maxWidth='sm'
-      style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}
+    <Box
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        padding: 0,
+        margin: 'auto',
+        maxWidth: '720px'
+      }}
     >
-      <Box style={{ flex: 1 }}>
+      <Box style={{ flex: 1 }} color='text.primary'>
         {(() => {
           switch(view) {
             case VIEW.LANDING:
@@ -32,20 +39,28 @@ function App() {
           }
         })()}
       </Box>
-      <BottomNavigation showLabels>
+      <BottomNavigation showLabels style={{
+        backgroundColor: theme.palette.secondary.main,
+        boxShadow: '0 0 8px 2px #285A45',
+        borderTopLeftRadius: '16px',
+        borderTopRightRadius: '16px'
+      }}>
         <BottomNavigationAction
           label="Purchases"
-          icon={<EuroIcon />}
+          icon={<EuroIcon fontSize='large' />}
           onClick={() => dispatch(changeView(VIEW.PURCHASE_HISTORY))}
         />
         <BottomNavigationAction
           label="Home"
-          icon={<HomeIcon />}
+          icon={<HomeIcon fontSize='large' />}
           onClick={() => dispatch(changeView(VIEW.PURCHASE_HISTORY))}
           />
-        <BottomNavigationAction label="Make a change" icon={<EcoIcon />}/>
+        <BottomNavigationAction
+          label="Make a change"
+          icon={<EcoIcon fontSize='large'/>}
+        />
       </BottomNavigation>
-    </Container>
+    </Box>
   );
 }
 
