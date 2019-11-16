@@ -14,19 +14,6 @@
   },
   {
     "AreaId": 1,
-    "Receipt": 420049479511691,
-    "TransactionDate": "2019-01-01",
-    "BeginHour": 18,
-    "EAN": "6412000017003",
-    "Quantity": "1\t000000",
-    "PersonAgeGrp": "25-34",
-    "KCustomer": 6712,
-    "QualClass": "Q_4-7",
-    "EasyClass": "E_4-7",
-    "IngredientTypeName": "marmeladi"
-  },
-  {
-    "AreaId": 1,
     "Receipt": 420049479511692,
     "TransactionDate": "2019-01-01",
     "BeginHour": 18,
@@ -89,19 +76,6 @@
     "QualClass": "Q_4-7",
     "EasyClass": "E_4-7",
     "IngredientTypeName": "kaurahiutale"
-  },
-  {
-    "AreaId": 1,
-    "Receipt": 420049479511697,
-    "TransactionDate": "2019-01-01",
-    "BeginHour": 18,
-    "EAN": "6412000017201",
-    "Quantity": "1\t000000",
-    "PersonAgeGrp": "25-34",
-    "KCustomer": 6712,
-    "QualClass": "Q_4-7",
-    "EasyClass": "E_4-7",
-    "IngredientTypeName": "marmeladi"
   },
   {
     "AreaId": 1,

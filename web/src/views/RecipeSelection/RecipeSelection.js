@@ -24,7 +24,7 @@ export default function RecipeSelection() {
   const products = selectedProducts.map(p => ({ name: p.IngredientTypeName }));
   useEffect(() => {
     fetchMatchingRecipes(products, setRecipes, dispatch);
-  }, [products, dispatch])
+  }, [])
   if (recipes.length === 0) return null;
   console.log(recipes);
 
@@ -70,7 +70,10 @@ function fetchMatchingRecipes(products, setRecipes, dispatch) {
     },
     body: JSON.stringify({
       filters: {
-        mainCategory: "1"
+        mainCategory: "4"
+      },
+      view: {
+        offset: 100  
       }
     })
   })
@@ -83,6 +86,9 @@ function fetchMatchingRecipes(products, setRecipes, dispatch) {
     body: JSON.stringify({
       filters: {
         mainCategory: "4"
+      },
+      view: {
+        offset: 200  
       }
     })
   })

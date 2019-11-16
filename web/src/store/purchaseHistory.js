@@ -24,13 +24,39 @@ export const getProductsFromReceipts = () => async (dispatch) => {
         }
       })
     )
-    const productData = response.data.results;
+    let productData = response.data.results;
 
     for (const prod of productData) {
+      
       const receipt = receiptData.find(r => r.EAN === prod.ean);
       prod.IngredientTypeName = receipt.IngredientTypeName;
     }
 
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+    
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+    
+      return array;
+    }
+
+    productData = shuffle(productData)
+
+    new Image().src = productData[productData.length - 1].pictureUrls[0].original
+    new Image().src = productData[productData.length - 2].pictureUrls[0].original
+    new Image().src = productData[productData.length - 3].pictureUrls[0].original
+    new Image().src = productData[productData.length - 4].pictureUrls[0].original
     dispatch(setProducts(productData))
   }
   catch (error) {
