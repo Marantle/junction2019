@@ -1,5 +1,4 @@
 import api from './constants';
-
 import receiptData from './receiptData.json';
 
 const initialState = {
@@ -15,7 +14,7 @@ export const setProducts = (products) => {
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
     const eans = receiptData.map((receipt) => String(receipt.EAN))
-    let productData = await api.post("/search/products", JSON.stringify({
+    const response = await api.post("/search/products", JSON.stringify({
         "filters": {
           "ean": [
             ...eans
@@ -23,8 +22,14 @@ export const getProductsFromReceipts = () => async (dispatch) => {
         }
       })
     )
+    const productData = response.data.results;
 
-    dispatch(setProducts(productData.data.results))
+    for (const prod of productData) {
+      const receipt = receiptData.find(r => r.EAN === prod.ean);
+      prod.IngredientTypeName = receipt.IngredientTypeName;
+    }
+
+    dispatch(setProducts(productData))
   }
   catch (error) {
     console.error('Error while getting productsFromRecieipts', error);
