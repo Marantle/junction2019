@@ -15,18 +15,20 @@ export const setProducts = (products) => {
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
     let products = []
-    for (let product in receiptData){
-      let productData = await api.post("/search/products", {
-          "filters": {
-            "ean": [
-              product.EAN
-            ]
-          }
+    const eans = receiptData.map((receipt) => String(receipt.EAN))
+    console.log(eans)
+    let productData = await api.post("/search/products", JSON.stringify({
+        "filters": {
+          "ean": [
+            ...eans
+          ]
         }
-      )
-      products.push(productData)
-    }
-    console("-----------")
+      })
+    )
+
+    products.push(productData)
+    
+    console.log("-----------")
     console.log(products)
     dispatch(setProducts(products))
   }
