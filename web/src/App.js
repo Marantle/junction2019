@@ -13,7 +13,7 @@ import RecipeSelection from './views/RecipeSelection/RecipeSelection';
 import PurchaseHistory from './views/PurchaseHistory';
 import MainChoice from './views/MainChoice';
 import bg from './bg.png';
-import SomethingQuick from './views/SometingQuick';
+import SomethingQuick from './views/SelectIngridients';
 
 function App() {
   const view = useSelector(state => state.view);

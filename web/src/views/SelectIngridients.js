@@ -6,7 +6,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { changeView, VIEW } from '../store/view';
 import { toggleSelectedProduct } from '../store/purchaseHistory';
 
-export default function LandingPage() {
+export default function SelectIngridients() {
   const someProducts = useSelector(state => Array.from(state.purchaseHistory.products).reverse().slice(0, 4));
   const selectedProducts = useSelector(state => state.purchaseHistory.selectedProducts);
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function LandingPage() {
 
   return (
     <Box display='flex' flexDirection='column' alignItems='center' marginLeft='0.5em' marginRight='0.5em'>
-      <p>We think you still have these, 
+      <p style={{ color: '#FFF' }}>We think you still have these, 
       which sounds the best right now?</p>
       <GridList cellHeight={180} cols={2} >
         {someProducts.map(product => (
