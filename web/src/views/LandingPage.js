@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Button } from '@material-ui/core';
 
+import { getProductsFromReceipts } from '../store/purchaseHistory'
 import { changeView, VIEW } from '../store/view';
 
 export default function LandingPage() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductsFromReceipts())
+  }, [dispatch])
+  
   const onClick = () => {
     dispatch(changeView(VIEW.MAIN_CHOICE));
   }
