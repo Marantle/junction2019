@@ -31,7 +31,7 @@ export default function SelectIngridients() {
           <GridListTile key={product.ean} onClick={() => onProductSelect(product)} style={{ mouse: ''}}>
               <img key={product.ean} src={product.pictureUrls[0].original} alt={product.ean} />
               <GridListTileBar
-                title={product.labelName.english}
+                title={product.labelName.english.substring(0, 13) + (product.labelName.english.length > 13 ? '...' : '')}
                 actionIcon={isSelected(product) && <CheckCircleIcon style={{ color: '#FFF', margin: '0.2em'}}/>}
               />
           </GridListTile>
