@@ -1028,19 +1028,6 @@
   },
   {
     "AreaId": 1,
-    "Receipt": 420049479511769,
-    "TransactionDate": "2019-06-06",
-    "BeginHour": 18,
-    "EAN": "6412000030521",
-    "Quantity": "1\t000000",
-    "PersonAgeGrp": "25-34",
-    "KCustomer": 6712,
-    "QualClass": "Q_4-7",
-    "EasyClass": "E_4-7",
-    "IngredientTypeName": "laatikko"
-  },
-  {
-    "AreaId": 1,
     "Receipt": 420049479511770,
     "TransactionDate": "2019-06-06",
     "BeginHour": 18,

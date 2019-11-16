@@ -35,10 +35,11 @@ export default function SelectIngridients() {
         ))}
       </GridList>
       <Button
-        style={{ marginBottom: '1em' }}
+        style={{ margin: '1em' }}
         size='large'
         variant='contained'
         color='secondary'
+        disabled={selectedProducts.length === 0}
         onClick={onNext}
       >
         Next

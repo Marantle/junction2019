@@ -24,7 +24,7 @@ export default function LandingPage() {
       alignItems: 'center',
       justifyContent: 'space-evenly'
     }}>
-      <p>Select option that fits your situation</p>
+      <p style={{ color: 'white' }}>Select option that fits your situation</p>
       <SelectionButton onClick={onClick}>
         I need to cook something quick
       </SelectionButton>
