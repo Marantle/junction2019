@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, GridList, GridListTile, GridListTileBar, Icon } from '@material-ui/core';
+import { Box, Button, GridList, GridListTile, GridListTileBar } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { changeView, VIEW } from '../store/view';
-import { toggleSelectedProduct } from '../store/purchaseHistory';
+import { toggleSelectedProduct, resetSelected } from '../store/purchaseHistory';
 
 export default function SelectIngridients() {
   const someProducts = useSelector(state => Array.from(state.purchaseHistory.products).reverse().slice(0, 4));
   const selectedProducts = useSelector(state => state.purchaseHistory.selectedProducts);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetSelected());
+  },[dispatch]);
   const onProductSelect = (product) => {
     dispatch(toggleSelectedProduct(product));
   }

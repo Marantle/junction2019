@@ -8,6 +8,7 @@ const initialState = {
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
 const SET_SELECTED_PRODUCTS = 'SET_SELECTED_PRODUCTS'
+const RESET_SELECTED = 'RESET_SELECTED';
 
 export const setProducts = (products) => {
   return { type: SET_PRODUCTS, products };
@@ -84,6 +85,10 @@ export const toggleSelectedProduct = (product) => (dispatch, getState) => {
   }
 }
 
+export const resetSelected = () => {
+  return { type: RESET_SELECTED }
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
@@ -92,6 +97,8 @@ export default (state = initialState, action) => {
       })
     case SET_SELECTED_PRODUCTS:
       return { ...state, selectedProducts: action.selectedProducts }
+    case RESET_SELECTED:
+      return { ...state, selectedProducts: [] }
     default:
       return state
   }
