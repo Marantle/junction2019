@@ -31,7 +31,7 @@ export default function RecipeSelection() {
   }, [])
   if (recipes.length === 0) return null;
   console.log(recipes);
-  
+
   return (
     <>
       <div className={styles.kmarket}></div>
