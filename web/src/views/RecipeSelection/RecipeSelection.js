@@ -1,27 +1,18 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import {
-//   Paper,
-//   Table,
-//   TableHead,
-//   TableBody,
-//   TableRow,
-//   TableCell
-// } from "@material-ui/core";
-// import { getProductsFromReceipts, setProducts } from "../../store/purchaseHistory";
 
+import market from './market.png';
 import styles from "./RecipeSelection.module.css";
 
 const apiKey = 'f629eee545784c2b8776716d5b537a95'
 
 const products = [
-  { name: "Tomaatti" },
-  { name: "Peruna" },
-  { name: "Porkkana" },
-  { name: "Suola" },
-  { name: "Siirappi" },
-  { name: "Maito" },
-  { name: "Nakki" }
+  { name: "maito" },
+  { name: "kevytmaito" },
+  { name: "täysmaito" },
+  { name: "mehu" },
+  { name: "täysmehu" },
+  { name: "ananas" },
+  { name: "marmeladi" }
 ];
 
 export default function RecipeSelection() {
@@ -34,23 +25,32 @@ export default function RecipeSelection() {
 
   return (
     <>
-      <div className={styles.kmarket}></div>
-      {recipes.map(recipe =>
-        <div className={styles.card} key={recipe.Id + "100"} style={backgroundStyle(recipe.PictureUrls[0].Normal)}>
-          {console.log(recipe.PictureUrls[0].Normal)}
-          <div key={recipe.Id}>
-              {recipe.Name}
-          </div>
-        </div>
-      )}
+    <div className={styles.hCenter}>
+      <p className={styles.selectRecipe}>Your selection produced these recipes</p>
+      <div className={styles.kmarket}>
+        <img src={market} />
+      </div>
+        {recipes.map(recipe =>
+          <a href={recipe.Url} className={styles.card} key={recipe.Id + "100"} 
+            style={backgroundStyle(recipe.PictureUrls[0].Normal)}
+          >
+            <div className={styles.cardText} key={recipe.Id}>
+                {recipe.Name}
+            </div>
+            {/* </div> */}
+          </a>
+        )}
+      </div>
     </>
   );
 }
 
-function backgroundStyle (imgurl) {
+export function backgroundStyle (imgurl) {
   const style = {
-    backgroundImage:`url('${imgurl}')`,
-    backgroundSize: 'cover'
+    backgroundImage:`linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 66.11%), url('${imgurl}')`,
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
   };
   console.log(style)
   return style;
@@ -69,8 +69,7 @@ function fetchMatchingRecipes(products, setRecipes) {
         mainCategory: "4"
       }
     })
-  })
-    .then(response => {
+  }).then(response => {
       return response.json();
     })
     .then(json => {
@@ -85,7 +84,7 @@ function fetchMatchingRecipes(products, setRecipes) {
 
       const sorted = sortRecipes(filtered);
 
-      const top5 = sorted.slice(0, 5);
+      const top5 = sorted.slice(0, 10);
       setRecipes(top5);
       console.log(`set ${top5.length} recipes`)
     })
