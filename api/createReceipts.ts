@@ -8,7 +8,7 @@ const apply = () => {
   const year = 2019;
   let month = 1; 
   let day = 1;
-  let loopCount;
+  let loopCount = 0;
   names.forEach( name => {
     loopCount++;
     if (loopCount % 16 === 0) month++;
@@ -18,7 +18,7 @@ const apply = () => {
       Receipt: receiptNumber++,
       EAN: name.ean,
       IngredientTypeName: name.finnish,
-      TransactionDate: `${year}-0${month}-${day}`
+      TransactionDate: `${year}-0${month}-0${day}`
     })
   })
   fs.writeFileSync(appRoot + '/newReceipts.json', JSON.stringify(newReceipts, null, 2))
