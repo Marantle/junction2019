@@ -2,10 +2,12 @@ import api from './constants';
 import receiptData from './receiptData.json';
 
 const initialState = {
-  products: []
+  products: [],
+  selectedProducts: []
 }
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
+const SET_SELECTED_PRODUCTS = 'SET_SELECTED_PRODUCTS'
 
 export const setProducts = (products) => {
   return { type: SET_PRODUCTS, products };
@@ -37,12 +39,33 @@ export const getProductsFromReceipts = () => async (dispatch) => {
   }
 }
 
+export const toggleSelectedProduct = (product) => (dispatch, getState) => {
+  const { selectedProducts } = getState().purchaseHistory;
+  if (selectedProducts.some(p => p.ean === product.ean)) {
+    const newProducts = selectedProducts.filter(p => p.ean !== product.ean);
+    return dispatch({
+      type: SET_SELECTED_PRODUCTS,
+      selectedProducts: newProducts
+    })
+  } else {
+    return dispatch({
+      type: SET_SELECTED_PRODUCTS,
+      selectedProducts: [
+        ...selectedProducts,
+        product
+      ]
+    });
+  }
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
       return Object.assign({}, state, {
         products: action.products
       })
+    case SET_SELECTED_PRODUCTS:
+      return { ...state, selectedProducts: action.selectedProducts }
     default:
       return state
   }
