@@ -75,8 +75,9 @@ function fetchMatchingRecipes(products, setRecipes, dispatch) {
         recipe.matchedProducts = getMatchedProductsData(recipe, products);
         return recipe.matchedProducts.length >= MINIMUM_MATCHING_INGREDIENTS;
       });
-      console.log(filtered.length, " recipes filtered");
 
+      console.log(filtered.length, " recipes filtered");
+      
       if (!filtered || !filtered[0]) {
         return dispatch(changeView(VIEW.LANDING));
       }
