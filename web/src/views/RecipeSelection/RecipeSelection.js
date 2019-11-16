@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 import market from './market.png';
 import styles from "./RecipeSelection.module.css";
+import { changeView, VIEW } from "../../store/view";
 
 const apiKey = 'f629eee545784c2b8776716d5b537a95'
 
-const products = [
+const productsMock = [
   { name: "maito" },
   { name: "kevytmaito" },
   { name: "täysmaito" },
@@ -17,9 +19,12 @@ const products = [
 
 export default function RecipeSelection() {
   const [ recipes, setRecipes ] = useState([]);
+  const dispatch = useDispatch();
+  const { selectedProducts } = useSelector(state => state.purchaseHistory);
+  const products = selectedProducts.map(p => ({ name: p.IngredientTypeName }));
   useEffect(() => {
-    fetchMatchingRecipes(products, setRecipes);
-  }, [])
+    fetchMatchingRecipes(products, setRecipes, dispatch);
+  }, [products, dispatch])
   if (recipes.length === 0) return null;
   console.log(recipes);
 
@@ -56,7 +61,7 @@ export function backgroundStyle (imgurl) {
 }
 
 
-function fetchMatchingRecipes(products, setRecipes) {
+function fetchMatchingRecipes(products, setRecipes, dispatch) {
   const fetch1 = fetch("/search/recipes", {
     method: "POST",
     headers: {
@@ -89,7 +94,7 @@ function fetchMatchingRecipes(products, setRecipes) {
     })
     .then(([json1, json2]) => {
       const results = [...json1.results, ...json2.results]
-      const MINIMUM_MATCHING_INGREDIENTS = 2;
+      const MINIMUM_MATCHING_INGREDIENTS = 1;
 
       console.log("received ", results.length, " recipes");
       const filtered = results.filter(recipe => {
@@ -98,8 +103,11 @@ function fetchMatchingRecipes(products, setRecipes) {
       });
       console.log(filtered.length, " recipes filtered");
 
+      if (!filtered || !filtered[0]) {
+        return dispatch(changeView(VIEW.LANDING));
+      }
       const sorted = sortRecipes(filtered);
-
+      
       const top5 = sorted.slice(0, 10);
       setRecipes(top5);
       console.log(`set ${top5.length} recipes`)
@@ -136,6 +144,7 @@ const productInIngredients = (product, ingredient) => {
 }
 
 const sortRecipes = (recipes) => {
+  if (!recipes || !recipes[0]) return;
   console.log(recipes[0].matchedProducts)
   const sorted = [...recipes].sort((a, b) => {
     if (a.matchedProducts.length > b.matchedProducts.length) return -1;

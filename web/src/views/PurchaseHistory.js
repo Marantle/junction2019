@@ -30,21 +30,19 @@ export default function PurchaseHistory() {
   const productsWithDates = getProductsPurchasingDates(products)
   const sortedData = productsWithDates.sort(custom_sort);
   return (
-    <>
-      <h1>Purchase History</h1>
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Purchase Date</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedData.map((item, i) => <Row key={i} {...item} />)}
-          </TableBody>
-        </Table>
-      </Paper>
-    </>
+    <Paper>
+      <h1 style={{ textAlign: 'center' }}>Purchase History</h1>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Purchase Date</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {sortedData.map((item, i) => <Row key={i} {...item} />)}
+        </TableBody>
+      </Table>
+    </Paper>
   );
 }

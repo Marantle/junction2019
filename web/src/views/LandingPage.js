@@ -23,10 +23,10 @@ export default function LandingPage() {
       flex='1'
       alignItems='center'
     >
-        <p style={{ textAlign: 'center', maxWidth: '300px' }}>
+        <p style={{ textAlign: 'center', maxWidth: '300px', color: 'white' }}>
           Need help emptying your dry food cabinet? Is it the end of the month again? Want to make a change for the environment?
         </p>
-        <p>
+        <p style={{ color: 'white' }}>
           Don't worry we got you covered!
         </p>
         <Button variant='contained' color='secondary' onClick={onClick}>
