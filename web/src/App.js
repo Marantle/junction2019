@@ -9,8 +9,8 @@ import { useTheme } from '@material-ui/core/styles';
 
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
-import PruchaseHistory from './views/PurchaseHistory';
 import RecipeSelection from './views/RecipeSelection/RecipeSelection';
+import PurchaseHistory from './views/PurchaseHistory';
 
 function App() {
   const view = useSelector(state => state.view);
@@ -25,16 +25,20 @@ function App() {
         height: '100vh',
         padding: 0,
         margin: 'auto',
-        maxWidth: '720px'
+        maxWidth: '640px'
       }}
+      bgcolor='secondary.main'
     >
+      <Box component='h1' textAlign='center' color='text.secondary'>
+        Kitchen Konmari
+      </Box>
       <Box style={{ flex: 1 }} color='text.primary'>
         {(() => {
           switch(view) {
             case VIEW.LANDING:
               return <LandingPage />
             case VIEW.PURCHASE_HISTORY:
-              return <PruchaseHistory />
+              return <PurchaseHistory />
             case VIEW.RECIPE_SELECTION:
               return <RecipeSelection />
             default:
@@ -56,7 +60,7 @@ function App() {
         <BottomNavigationAction
           label="Home"
           icon={<HomeIcon fontSize='large' />}
-          onClick={() => dispatch(changeView(VIEW.PURCHASE_HISTORY))}
+          onClick={() => dispatch(changeView(VIEW.LANDING))}
           />
         <BottomNavigationAction
           label="Make a change"
