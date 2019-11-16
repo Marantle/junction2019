@@ -26,6 +26,7 @@ function App() {
         margin: 'auto',
         maxWidth: '720px'
       }}
+      bgcolor='secondary.main'
     >
       <Box style={{ flex: 1 }} color='text.primary'>
         {(() => {
@@ -53,7 +54,7 @@ function App() {
         <BottomNavigationAction
           label="Home"
           icon={<HomeIcon fontSize='large' />}
-          onClick={() => dispatch(changeView(VIEW.PURCHASE_HISTORY))}
+          onClick={() => dispatch(changeView(VIEW.LANDING))}
           />
         <BottomNavigationAction
           label="Make a change"
