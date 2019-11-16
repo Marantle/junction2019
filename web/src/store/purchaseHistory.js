@@ -1,11 +1,8 @@
 import api from './constants';
-
 import receiptData from './receiptData.json';
 
-import purchasesMock from '../mock/purchases';
-
 const initialState = {
-  products: purchasesMock
+  products: []
 }
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
