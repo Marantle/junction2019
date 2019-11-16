@@ -1,6 +1,6 @@
 const fetchn = require("node-fetch");
 const fs = require("fs");
-var path = require('path');
+const path = require('path');
 const appRoot = path.resolve(__dirname);
 
 const apiKey = 'f629eee545784c2b8776716d5b537a95'
