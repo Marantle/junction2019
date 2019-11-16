@@ -29,13 +29,13 @@ export default function LandingPage() {
         I need to cook something quick
       </SelectionButton>
       <SelectionButton disabled>
-        I could get something from the conrner shop
+        I could get something from the corner shop
       </SelectionButton>
       <SelectionButton disabled>
         Something's about to expire
       </SelectionButton>
       <SelectionButton disabled>
-        I want variation and healhier food
+        I want variation and healthier food
       </SelectionButton>
     </Box>  
   )
