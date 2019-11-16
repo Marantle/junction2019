@@ -31,18 +31,14 @@ export default function RecipeSelection() {
         <img src={market} />
       </div>
         {recipes.map(recipe =>
-          <div className={styles.card} key={recipe.Id + "100"} 
+          <a href={recipe.Url} className={styles.card} key={recipe.Id + "100"} 
             style={backgroundStyle(recipe.PictureUrls[0].Normal)}
           >
-            {/* <img className={styles.cardImage} src={recipe.PictureUrls[0].Normal} /> */}
-            {/* <div className={styles.shadow}> */}
-              {console.log(recipe.PictureUrls[0].Normal)}
-              {/* <div className={styles.cardTop}></div> */}
-              <div className={styles.cardText} key={recipe.Id}>
-                  {recipe.Name}
-              </div>
+            <div className={styles.cardText} key={recipe.Id}>
+                {recipe.Name}
+            </div>
             {/* </div> */}
-          </div>
+          </a>
         )}
       </div>
     </>
