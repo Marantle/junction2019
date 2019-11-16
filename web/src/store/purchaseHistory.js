@@ -15,13 +15,8 @@ export const setProducts = (products) => {
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
     let products = []
-<<<<<<< HEAD
     for (let product of receiptData){
       let productData = await api.post("/search/products", JSON.stringify({
-=======
-    for (let product in receiptData){
-      let productData = await api.post("/search/products", {
->>>>>>> e857414c81d19cde628da94276322e458954db08
           "filters": {
             "ean": [
               String(product.EAN)
