@@ -7,16 +7,6 @@ import { changeView, VIEW } from "../../store/view";
 
 const apiKey = 'f629eee545784c2b8776716d5b537a95'
 
-const productsMock = [
-  { name: "maito" },
-  { name: "kevytmaito" },
-  { name: "täysmaito" },
-  { name: "mehu" },
-  { name: "täysmehu" },
-  { name: "ananas" },
-  { name: "marmeladi" }
-];
-
 export default function RecipeSelection() {
   const [ recipes, setRecipes ] = useState([]);
   const dispatch = useDispatch();
@@ -33,7 +23,7 @@ export default function RecipeSelection() {
     <div className={styles.hCenter}>
       <p className={styles.selectRecipe}>Your selection produced these recipes</p>
       <div className={styles.kmarket}>
-        <img src={market} />
+        <img src={market} alt='Market' />
       </div>
         {recipes.map(recipe =>
           <a href={recipe.Url} className={styles.card} key={recipe.Id + "100"} 

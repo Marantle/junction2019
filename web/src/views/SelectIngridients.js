@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, GridList, GridListTile, GridListTileBar, Icon } from '@material-ui/core';
+import { Box, Button, GridList, GridListTile, GridListTileBar } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { changeView, VIEW } from '../store/view';
