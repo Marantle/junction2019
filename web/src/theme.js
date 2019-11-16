@@ -8,5 +8,8 @@ export default createMuiTheme({
     text : {
       secondary: '#FFF'
     }
+  },
+  typography: {
+    fontSize: 16
   }
 });

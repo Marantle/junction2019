@@ -31,7 +31,7 @@ export default function PurchaseHistory() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((item, i) => <Row key={i} {...item} />)}
+            {items.map((item, i) => <Row key={i} {...item} />)}
           </TableBody>
         </Table>
       </Paper>

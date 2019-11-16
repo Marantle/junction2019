@@ -24,9 +24,13 @@ function App() {
         height: '100vh',
         padding: 0,
         margin: 'auto',
-        maxWidth: '720px'
+        maxWidth: '640px'
       }}
+      bgcolor='secondary.main'
     >
+      <Box component='h1' textAlign='center' color='text.secondary'>
+        Kitchen Konmari
+      </Box>
       <Box style={{ flex: 1 }} color='text.primary'>
         {(() => {
           switch(view) {
