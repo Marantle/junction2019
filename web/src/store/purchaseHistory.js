@@ -3,7 +3,7 @@ import api from './constants';
 import receiptData from './receiptData.json';
 
 const initialState = {
-  products: ""
+  products: []
 }
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
@@ -24,11 +24,10 @@ export const getProductsFromReceipts = () => async (dispatch) => {
           }
         })
       )
-      products.push(productData)
+      products.push(productData.data.results[0])
     }
-    console.log("-----------")
-    console.log(products)
-    dispatch(setProducts(products))
+    dispatch({ type: SET_PRODUCTS, products: products });
+
   }
   catch (error) {
     console.error('Error while getting productsFromRecieipts', error);

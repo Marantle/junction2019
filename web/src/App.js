@@ -9,7 +9,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
-import PruchaseHistory from './views/PurchaseHistory';
+import PurchaseHistory from './views/PurchaseHistory';
 
 function App() {
   const view = useSelector(state => state.view);
@@ -33,7 +33,7 @@ function App() {
             case VIEW.LANDING:
               return <LandingPage />
             case VIEW.PURCHASE_HISTORY:
-              return <PruchaseHistory />
+              return <PurchaseHistory />
             default:
               return <h1>{view} is not known</h1>
           }
@@ -53,7 +53,7 @@ function App() {
         <BottomNavigationAction
           label="Home"
           icon={<HomeIcon fontSize='large' />}
-          onClick={() => dispatch(changeView(VIEW.PURCHASE_HISTORY))}
+          onClick={() => dispatch(changeView(VIEW.LANDING))}
           />
         <BottomNavigationAction
           label="Make a change"
