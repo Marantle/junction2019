@@ -9,6 +9,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
+import RecipeSelection from './views/RecipeSelection/RecipeSelection';
 import PurchaseHistory from './views/PurchaseHistory';
 import MainChoice from './views/MainChoice';
 import SomethingQuick from './views/SometingQuick';
@@ -17,7 +18,6 @@ function App() {
   const view = useSelector(state => state.view);
   const dispatch = useDispatch();
   const theme = useTheme();
-
   return (
     <Box
       style={{
@@ -47,6 +47,8 @@ function App() {
               return <LandingPage />
             case VIEW.PURCHASE_HISTORY:
               return <PurchaseHistory />
+            case VIEW.RECIPE_SELECTION:
+              return <RecipeSelection />
             case VIEW.MAIN_CHOICE:
               return <MainChoice />
             case VIEW.SOMETHING_QUICK:
