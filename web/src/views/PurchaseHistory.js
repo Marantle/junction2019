@@ -1,6 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Paper, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
-import getProductsFromReceipts from '../store/purchaseHistory'
+import { getProductsFromReceipts } from '../store/purchaseHistory'
 
 const Row = ({ name } = {}) => (
   <TableRow>
@@ -8,9 +9,10 @@ const Row = ({ name } = {}) => (
   </TableRow>
 )
 
-export default async function PurchaseHistory() {
+export default function PurchaseHistory() {
   // await dispatch(getProductsFromReceipts())
-  getProductsFromReceipts()
+  const dispatch = useDispatch();
+  dispatch(getProductsFromReceipts());
   console.log("-----------")
   const items = [{ name: 'RagettiSpagetti'}];
 

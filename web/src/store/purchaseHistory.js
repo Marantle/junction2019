@@ -1,5 +1,6 @@
 import api from './constants';
-import {fs} from 'fs';
+
+import receiptData from './receiptData.json';
 
 const initialState = {
   products: ""
@@ -11,12 +12,12 @@ export const setProducts = (products) => {
   return { type: SET_PRODUCTS, products };
 }
 
-export async function getProductsFromReceipts () {
+
+
+export const getProductsFromReceipts = () => async (dispatch) => {
   try {
-    const receiptData = fs.readFileSync("./purchaseHistory.json", "utf-8");
-    const jsonReceiptData = JSON.parse(receiptData);
     let products = []
-    for (let product in jsonReceiptData){
+    for (let product in receiptData){
       let productData = await api.post("https://kesko.azure-api.net/v1/search/products", {
           "filters": {
             "ean": [
@@ -29,9 +30,12 @@ export async function getProductsFromReceipts () {
     }
     console("-----------")
     console.log(products)
-    // await dispatch(setProducts(products))
+    dispatch(setProducts(products))
   }
-  catch (error) {}
+  catch (error) {
+    console.error('Error while getting productsFromRecieipts', error);
+    dispatch({ type: SET_PRODUCTS, products: 'error' });
+  }
 }
 
 export default (state = initialState, action) => {
