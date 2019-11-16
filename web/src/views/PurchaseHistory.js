@@ -18,7 +18,7 @@ export default function PurchaseHistory() {
 
   return (
     <>
-      <h1>Pruchase History</h1>
+      <h1>Purchase History</h1>
       <Paper>
         <Table>
           <TableHead>
