@@ -2,8 +2,10 @@ import api from './constants';
 
 import receiptData from './receiptData.json';
 
+import purchasesMock from '../mock/purchases';
+
 const initialState = {
-  products: []
+  products: purchasesMock
 }
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
