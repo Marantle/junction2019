@@ -7,7 +7,7 @@ export const VIEW = {
   SOMETHING_QUICK: 'SOMETHING_QUICK'
 }
 
-const defaultState = VIEW.LANDING;
+const defaultState = VIEW.RECIPE_SELECTION;
 
 const CHANGE_VIEW = 'CHANGE_VIEW';
 

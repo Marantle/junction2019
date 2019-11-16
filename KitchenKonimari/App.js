@@ -5,7 +5,7 @@ import { WebView } from 'react-native-webview';
 export default function App() {
   return (
     <WebView
-        source={{ uri: 'http://localhost:3000' }}
+        source={{ uri: 'http://165.22.75.85:3000' }}
         style={{ marginTop: 20 }}
       />
   );

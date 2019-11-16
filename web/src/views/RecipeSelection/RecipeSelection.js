@@ -52,13 +52,24 @@ export function backgroundStyle (imgurl) {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
   };
-  console.log(style)
   return style;
 }
 
 
 function fetchMatchingRecipes(products, setRecipes) {
-  fetch("/search/recipes", {
+  const fetch1 = fetch("/search/recipes", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "ocp-apim-subscription-key": apiKey
+    },
+    body: JSON.stringify({
+      filters: {
+        mainCategory: "1"
+      }
+    })
+  })
+  const fetch2 = fetch("/search/recipes", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -69,14 +80,19 @@ function fetchMatchingRecipes(products, setRecipes) {
         mainCategory: "4"
       }
     })
-  }).then(response => {
-      return response.json();
+  })
+  Promise.all([fetch1, fetch2])
+  .then(async([response1, response2]) => {
+      const a = await response1.json()
+      const b = await response2.json()
+      return [a, b]
     })
-    .then(json => {
+    .then(([json1, json2]) => {
+      const results = [...json1.results, ...json2.results]
       const MINIMUM_MATCHING_INGREDIENTS = 2;
 
-      console.log("received ", json.results.length, " recipes");
-      const filtered = json.results.filter(recipe => {
+      console.log("received ", results.length, " recipes");
+      const filtered = results.filter(recipe => {
         recipe.matchedProducts = getMatchedProductsData(recipe, products);
         return recipe.matchedProducts.length >= MINIMUM_MATCHING_INGREDIENTS;
       });
