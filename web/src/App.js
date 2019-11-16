@@ -9,7 +9,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
-import PruchaseHistory from './views/PurchaseHistory';
+import PurchaseHistory from './views/PurchaseHistory';
 import MainChoice from './views/MainChoice';
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
             case VIEW.LANDING:
               return <LandingPage />
             case VIEW.PURCHASE_HISTORY:
-              return <PruchaseHistory />
+              return <PurchaseHistory />
             case VIEW.MAIN_CHOICE:
               return <MainChoice />
             default:
