@@ -17,18 +17,18 @@ export const setProducts = (products) => {
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
     let products = []
-    for (let product in receiptData){
-      let productData = await api.post("https://kesko.azure-api.net/v1/search/products", {
+    for (let product of receiptData){
+      let productData = await api.post("/search/products", JSON.stringify({
           "filters": {
             "ean": [
-              product.EAN
+              String(product.EAN)
             ]
           }
-        }
+        })
       )
       products.push(productData)
     }
-    console("-----------")
+    console.log("-----------")
     console.log(products)
     dispatch(setProducts(products))
   }
