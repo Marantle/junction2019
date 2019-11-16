@@ -12,13 +12,11 @@ export const setProducts = (products) => {
   return { type: SET_PRODUCTS, products };
 }
 
-
-
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
     let products = []
     for (let product in receiptData){
-      let productData = await api.post("https://kesko.azure-api.net/v1/search/products", {
+      let productData = await api.post("/search/products", {
           "filters": {
             "ean": [
               product.EAN
