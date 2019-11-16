@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paper, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import getProductsFromReceipts from '../store/purchaseHistory'
 
 const Row = ({ name } = {}) => (
   <TableRow>
@@ -7,7 +8,10 @@ const Row = ({ name } = {}) => (
   </TableRow>
 )
 
-export default function PruchaseHistory() {
+export default async function PurchaseHistory() {
+  // await dispatch(getProductsFromReceipts())
+  getProductsFromReceipts()
+  console.log("-----------")
   const items = [{ name: 'RagettiSpagetti'}];
 
   return (

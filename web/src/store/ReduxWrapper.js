@@ -3,11 +3,14 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-
 import view from './view';
+import purchaseHistory from './purchaseHistory';
+
+
 
 const rootReducer = combineReducers({
-  view
+  view,
+  purchaseHistory,
 });
 
 const initialState = {};
