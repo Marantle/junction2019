@@ -10,12 +10,13 @@ import { useTheme } from '@material-ui/core/styles';
 import { VIEW, changeView } from './store/view';
 import LandingPage from './views/LandingPage';
 import PruchaseHistory from './views/PurchaseHistory';
+import RecipeSelection from './views/RecipeSelection/RecipeSelection';
 
 function App() {
   const view = useSelector(state => state.view);
   const dispatch = useDispatch();
   const theme = useTheme();
-
+  dispatch(changeView(VIEW.RECIPE_SELECTION))
   return (
     <Box
       style={{
@@ -34,6 +35,8 @@ function App() {
               return <LandingPage />
             case VIEW.PURCHASE_HISTORY:
               return <PruchaseHistory />
+            case VIEW.RECIPE_SELECTION:
+              return <RecipeSelection />
             default:
               return <h1>{view} is not known</h1>
           }
