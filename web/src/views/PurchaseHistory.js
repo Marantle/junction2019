@@ -11,17 +11,20 @@ export default function PruchaseHistory() {
   const items = [{ name: 'RagettiSpagetti'}];
 
   return (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {items.map((item, i) => <Row key={i} {...item} />)}
-        </TableBody>
-      </Table>
-    </Paper>
+    <>
+      <h1>Pruchase History</h1>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {items.map((item, i) => <Row key={i} {...item} />)}
+          </TableBody>
+        </Table>
+      </Paper>
+    </>
   );
 }
