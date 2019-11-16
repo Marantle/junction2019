@@ -30,12 +30,30 @@ export default function RecipeSelection() {
     fetchMatchingRecipes(products, setRecipes);
   }, [])
   if (recipes.length === 0) return null;
+  console.log(recipes);
+  
   return (
     <>
       <div className={styles.kmarket}></div>
-      
+      {recipes.map(recipe =>
+        <div className={styles.card} key={recipe.Id + "100"} style={backgroundStyle(recipe.PictureUrls[0].Normal)}>
+          {console.log(recipe.PictureUrls[0].Normal)}
+          <div key={recipe.Id}>
+              {recipe.Name}
+          </div>
+        </div>
+      )}
     </>
   );
+}
+
+function backgroundStyle (imgurl) {
+  const style = {
+    backgroundImage:`url('${imgurl}')`,
+    backgroundSize: 'cover'
+  };
+  console.log(style)
+  return style;
 }
 
 
