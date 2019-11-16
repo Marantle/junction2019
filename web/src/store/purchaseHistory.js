@@ -14,9 +14,7 @@ export const setProducts = (products) => {
 
 export const getProductsFromReceipts = () => async (dispatch) => {
   try {
-    let products = []
     const eans = receiptData.map((receipt) => String(receipt.EAN))
-    console.log(eans)
     let productData = await api.post("/search/products", JSON.stringify({
         "filters": {
           "ean": [
@@ -30,7 +28,7 @@ export const getProductsFromReceipts = () => async (dispatch) => {
   }
   catch (error) {
     console.error('Error while getting productsFromRecieipts', error);
-    dispatch({ type: SET_PRODUCTS, products: 'error' });
+    dispatch({ type: SET_PRODUCTS, products: [] });
   }
 }
 
