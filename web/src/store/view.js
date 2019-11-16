@@ -6,7 +6,7 @@ export const VIEW = {
   SELECT_INGREDIENT: 'SELECT_INGREDIENT'
 }
 
-const defaultState = VIEW.MAIN_CHOICE;
+const defaultState = VIEW.RECIPE_SELECTION;
 
 const CHANGE_VIEW = 'CHANGE_VIEW';
 

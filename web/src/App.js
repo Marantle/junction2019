@@ -12,6 +12,7 @@ import LandingPage from './views/LandingPage';
 import RecipeSelection from './views/RecipeSelection/RecipeSelection';
 import PurchaseHistory from './views/PurchaseHistory';
 import MainChoice from './views/MainChoice';
+import bg from './bg.png';
 
 function App() {
   const view = useSelector(state => state.view);
@@ -25,7 +26,10 @@ function App() {
         height: '100vh',
         padding: 0,
         margin: 'auto',
-        maxWidth: '640px'
+        maxWidth: '640px',
+        backgroundColor: '',
+        backgroundImage: `url(${bg})`,
+        backgroundSize: 'cover'
       }}
     >
       <Box bgcolor='secondary.main'>
@@ -56,7 +60,7 @@ function App() {
         })()}
       </Box>
       <BottomNavigation showLabels style={{
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: '#285A45',
         boxShadow: '0 0 8px 2px #285A45',
         borderTopLeftRadius: '16px',
         borderTopRightRadius: '16px'
